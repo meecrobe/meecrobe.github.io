@@ -33295,6 +33295,7 @@ if ("development" === 'production') {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.convert = convert;
 exports.useTime = useTime;
 
 var _react = require("react");
@@ -33394,29 +33395,28 @@ function useTime(initialValue, format) {
       setValue = _useState[1];
 
   (0, _react.useEffect)(function () {
-    var lowercaseValue = initialValue.toLowerCase();
-    var time = format === '12' ? '12:00 AM' : '12:00';
+    var time = convert(initialValue, format);
 
-    if (!regExp.test(lowercaseValue)) {
+    if (time) {
       setValue(time);
-      return;
     }
-
-    var _getHoursAndMinutes = getHoursAndMinutes(initialValue),
-        hours = _getHoursAndMinutes[0],
-        minutes = _getHoursAndMinutes[1];
-
-    var timePeriod = getTimePeriod(initialValue);
-
-    if (format === '12') {
-      time = convertTo12Hour(hours, minutes, timePeriod);
-    } else {
-      time = convertTo24Hour(hours, minutes, timePeriod);
-    }
-
-    setValue(time);
   }, [initialValue, format]);
   return value;
+}
+
+function convert(value, format) {
+  var lowercaseValue = value.toLowerCase();
+
+  if (!regExp.test(lowercaseValue)) {
+    return null;
+  }
+
+  var _getHoursAndMinutes = getHoursAndMinutes(value),
+      hours = _getHoursAndMinutes[0],
+      minutes = _getHoursAndMinutes[1];
+
+  var timePeriod = getTimePeriod(value);
+  return format === '12' ? convertTo12Hour(hours, minutes, timePeriod) : convertTo24Hour(hours, minutes, timePeriod);
 }
 },{"react":"../node_modules/react/index.js"}],"components/TimeInput.tsx":[function(require,module,exports) {
 "use strict";
@@ -33703,7 +33703,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61535" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55641" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
