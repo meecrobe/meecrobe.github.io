@@ -33354,7 +33354,7 @@ function convertTo12Hour(hours, minutes, timePeriod) {
 
   _hours = _hours % 12;
   _hours = _hours ? _hours : 12;
-  return addLeadingZero(_hours) + ":" + addLeadingZero(_minutes) + " " + _timePeriod;
+  return _hours + ":" + addLeadingZero(_minutes) + " " + _timePeriod;
 }
 
 function convertTo24Hour(hours, minutes, timePeriod) {
@@ -33703,7 +33703,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52970" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61535" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
