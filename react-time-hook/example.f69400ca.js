@@ -33302,7 +33302,7 @@ var _react = require("react");
 
 function getHoursAndMinutes(value) {
   var digits = value.split(':').map(function (digit) {
-    return digit.replace(/\D/g, '');
+    return digit.replace(/\D/g, '') || '0';
   });
 
   if (digits.length === 2) {
@@ -33703,7 +33703,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55641" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53510" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
